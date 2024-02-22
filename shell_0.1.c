@@ -1,24 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include "shell.h"
 
-#define PROMPT "user$"
+char line[1024];
 
 int main(){
-  char line[1024];
-  char *args[64];
-  pid_t x; //child process ID
-  int status;
-
   while (1) {
-    printf(PROMPT);
-    printf(" ");
+    term_log(PROMPT);
+    term_log(" ");
 
     if (fgets(line, sizeof(line), stdin) == NULL) {
-        printf("\n");
+        term_log("\n");
         break;
     }
 
@@ -30,7 +20,6 @@ int main(){
         token = strtok(NULL, "\n");
     } while (token != NULL);
  
-
     args[i] = NULL;
 
     if (i == 0)
