@@ -24,7 +24,7 @@ int main(__attribute__((unused))int argc, char **argv)
 		if (read != -1)
 		{
 			tokenize_commands(line, &commands, &command_count);
-			for (f = 0; f < command_count; i++)
+			for (f = 0; f < command_count; f++)
 			{
 				tokenize_str(commands[f], &args, &token_count);
 				stat = handle_commands(args,  &token_count, argv[0], line);
@@ -63,7 +63,7 @@ int handle_commands(char **args, int *token_count, char *argv0, char *line)
 		(strcmp(args[0], "env") == 0))
 	{
 		builtin_commands(args);
-		val = changedir(args, argv0);
+		val = chagedir(args, argv0);
 		print_env(args);
 		return (val);
 	}
