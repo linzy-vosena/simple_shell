@@ -42,7 +42,6 @@ void print_env(char **args)
 				write(STDOUT_FILENO, "\n", 1);
 			}
 		}
-		free(env_ptrs);
 	}
 }
 
